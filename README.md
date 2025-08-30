@@ -2,7 +2,7 @@
 
 An intelligent web application that instantly verifies if a passport photo meets the official compliance standards for any country. Built with Next.js, this tool leverages AI to provide detailed feedback and actionable suggestions, helping users avoid photo rejections and application delays.
 
-## Home Page View:
+## Application View:
 
 ![](/public/home.png)
 
