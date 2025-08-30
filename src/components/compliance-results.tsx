@@ -10,7 +10,7 @@ import {
   Printer,
   Lightbulb,
 } from "lucide-react";
-import type { ComplianceResult, Country } from "@/types";
+import type { ComplianceResult } from "@/types";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 

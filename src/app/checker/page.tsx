@@ -1,21 +1,16 @@
-// app/checker/page.tsx
 "use client";
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 
-// ICONS
 import { FileCheck, RotateCw, Sparkles } from "lucide-react";
 
-// YOUR EXISTING COMPONENTS (Make sure these paths are correct)
 import ImageUploader from "@/components/image-uploader";
 import CountrySelector from "@/components/country-selector";
 import ComplianceResults from "@/components/compliance-results";
 import Toast from "@/components/ui/toast";
-import ResultsSkeleton from "@/components/results-skeleton"; // Import the skeleton loader
-
-// YOUR ACTIONS & TYPES (Make sure these paths are correct)
+import ResultsSkeleton from "@/components/results-skeleton";
 import { extractTextFromImage } from "@/lib/ocr-client";
 import { analyzePassportWithFacePlusPlus } from "@/actions/index";
 import { analyzePassportWithGemini } from "@/actions/Gemini";

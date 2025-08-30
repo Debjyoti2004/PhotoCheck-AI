@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronDown, Search, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Country } from "@/types";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 interface CountrySelectorProps {
   onCountrySelect: (country: Country) => void;
@@ -68,6 +68,7 @@ const countries: Country[] = [
   { code: "VN", name: "Vietnam", flag: "🇻🇳" },
 ];
 
+// Custom hook to detect clicks outside of a component
 function useOnClickOutside(ref: React.RefObject<HTMLDivElement>, handler: (event: MouseEvent | TouchEvent) => void) {
   useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {
@@ -114,27 +115,23 @@ export default function CountrySelector({ onCountrySelect, selectedCountry, disa
         type="button"
         onClick={toggleOpen}
         disabled={disabled}
-        className={clsx(
-          "w-full px-4 py-3 text-left flex items-center justify-between transition-colors duration-200",
-          "border rounded-lg",
-          "bg-white dark:bg-gray-700/50",
-          "border-gray-300 dark:border-gray-600",
-          "focus:outline-none focus:ring-2 focus:ring-blue-500",
-          !disabled && "hover:border-gray-400 dark:hover:border-gray-500",
-          disabled && "bg-gray-100 dark:bg-gray-800 cursor-not-allowed opacity-70"
+        className={cn(
+          "flex h-12 w-full items-center justify-between rounded-lg border border-input bg-background px-4 py-3 text-left text-sm transition-colors",
+          "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background",
+          "disabled:cursor-not-allowed disabled:opacity-50"
         )}
       >
         {selectedCountry ? (
-          <div className="flex items-center">
-            <span className="text-2xl mr-3">{selectedCountry.flag}</span>
-            <span className="font-medium text-gray-900 dark:text-gray-100">{selectedCountry.name}</span>
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">{selectedCountry.flag}</span>
+            <span className="font-medium text-foreground">{selectedCountry.name}</span>
           </div>
         ) : (
-          <span className="text-gray-500 dark:text-gray-400">Select a country...</span>
+          <span className="text-muted-foreground">Select a country...</span>
         )}
         <ChevronDown
-          className={clsx(
-            "w-5 h-5 text-gray-400 dark:text-gray-500 transition-transform duration-300",
+          className={cn(
+            "h-5 w-5 text-muted-foreground transition-transform duration-300",
             isOpen && "rotate-180"
           )}
         />
@@ -150,16 +147,16 @@ export default function CountrySelector({ onCountrySelect, selectedCountry, disa
             className="absolute top-full left-0 right-0 mt-2 z-50 overflow-hidden"
             style={{ transformOrigin: 'top' }}
           >
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xl">
-              <div className="p-2 border-b border-gray-200 dark:border-gray-700">
+            <div className="rounded-lg border border-zinc-700 bg-zinc-900 text-popover-foreground shadow-lg">
+              <div className="p-2">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <input
                     type="text"
                     placeholder="Search countries..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-9 pr-4 py-2 bg-transparent text-gray-800 dark:text-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full rounded-md bg-transparent py-2 pl-9 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                     autoFocus
                   />
                 </div>
@@ -171,15 +168,15 @@ export default function CountrySelector({ onCountrySelect, selectedCountry, disa
                     <button
                       key={country.code}
                       onClick={() => handleCountrySelect(country)}
-                      className="w-full px-4 py-3 text-left flex items-center transition-colors duration-150 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="w-full px-4 py-3 text-left flex items-center gap-3 transition-colors duration-150 hover:bg-accent hover:text-accent-foreground"
                     >
-                      <span className="text-2xl mr-3">{country.flag}</span>
-                      <span className="font-medium text-gray-900 dark:text-gray-100 flex-1">{country.name}</span>
-                      {selectedCountry?.code === country.code && <Check className="w-5 h-5 text-blue-600 dark:text-blue-400" />}
+                      <span className="text-2xl">{country.flag}</span>
+                      <span className="font-medium flex-1">{country.name}</span>
+                      {selectedCountry?.code === country.code && <Check className="h-5 w-5 text-primary" />}
                     </button>
                   ))
                 ) : (
-                  <div className="px-4 py-8 text-center text-sm text-gray-500 dark:text-gray-400">
+                  <div className="px-4 py-8 text-center text-sm text-muted-foreground">
                     No countries found.
                   </div>
                 )}

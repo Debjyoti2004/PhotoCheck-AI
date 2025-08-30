@@ -1,6 +1,6 @@
 import { X, AlertCircle, Info } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import clsx from "clsx";
 
 type ToastType = "info" | "warning" | "error";
