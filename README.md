@@ -1,37 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PhotoCheck AI - Passport Photo Compliance Checker
 
-## Getting Started
+An intelligent web application that instantly verifies if a passport photo meets the official compliance standards for any country. Built with Next.js, this tool leverages AI to provide detailed feedback and actionable suggestions, helping users avoid photo rejections and application delays.
 
-First, run the development server:
+## Home Page View:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![](/public/home.png)
+
+### Live Link: [photocheck.debjyoti.co.in](https://photocheck.debjyoti.co.in)
+
+## ✨ Key Features
+
+- **AI-Powered Analysis**: Utilizes Face++ for detailed facial attribute detection and Google Gemini for comprehensive compliance analysis.
+
+- **Global Standards**: Check photos against the specific requirements for a large, alphabetized list of countries.
+
+- **nstant Feedback**: Receive a detailed report with a compliance score, warnings, failures, and actionable suggestions.
+
+- **Smart Validation**: Automatically detects non-human images and checks for file size limits before processing.
+
+- **Privacy First**: All image processing is done ephemerally; photos are never stored on the server.
+
+- **Modern UI/UX**: A sleek, responsive design with a professional dark mode, smooth animations, and a skeleton loader for a great user experience.
+
+- **Landing Page**: A professional homepage to build user trust and explain the tool's features.
+
+## 🚀 Getting Started
+
+Follow these instructions to set up and run the project on your local machine.
+
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm, yarn, or pnpm
+
+### Clone the Repository
+
+```sh
+git clone https://github.com/Debjyoti2004/PhotoCheck-AI.git
+cd PhotoCheck-AI
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Set Up Environment Variables
 
-## Learn More
+You need to create a file named .env.local in the root of your project and add your API keys.
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+# .env.local
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Face++ API Credentials
+FACEPP_API_KEY=<Your Face++ API Key>
+FACEPP_API_SECRET=<Your Face++ API Secret>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Google Gemini API Key
+GEMINI_API_KEY=<Your Google Gemini API Key>
+```
 
-## Deploy on Vercel
+### Run the Development Server
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```sh
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Passport-Photo-Compliance-Checker
+Open `http://localhost:3000` with your browser to see the result.
+
+### 🛠️ Tech Stack
+
+- **Framework**: `Next.js`14 (App Router)
+
+- **Language**: `TypeScript`
+
+- **Styling**: `Tailwind CSS`
+
+- **UI Components**: `Shadcn/UI`
+
+- **Animation**: `Framer Motion`
+
+- **Icons**: `Lucide React`
+
+- **Themeing**: `next-themes`
+
+- **APIs**:
+
+  - `Face++` for face detection and attribute analysis.
+
+  - `Google Gemini` for compliance logic and suggestions.
+
+## 👨‍💻 Author
+
+This project was made with ♥ by Debjyoti Shit.
+
+- Check out my portfolio at [debjyoti.co.in](https://www.debjyoti.co.in).
+- Check out my LinkedIn at [debjyotishit](https://www.linkedin.com/in/debjyotishit/).
+
+## 📄 License
+
+This project is licensed under the `MIT License`. See the LICENSE file for details.
